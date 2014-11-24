@@ -11,6 +11,7 @@ var sun = new Triangle(CENTER, 50, 50, 1000, "#FFF76A");
 
 var mercury = new Planet({
   name: 'mercury',
+  freq: 110,
   orbit: {
     around: sun,
     radius: 50
@@ -22,6 +23,7 @@ var mercury = new Planet({
 
 var venus = new Planet({
   name: 'venus',
+  freq: 220,
   orbit : {
     around: sun,
     radius: 80
@@ -34,6 +36,7 @@ var venus = new Planet({
 
 var earth = new Planet({
   name: 'earth',
+  freq: 330,
   orbit : {
     around: sun,
     radius: 120
@@ -44,7 +47,9 @@ var earth = new Planet({
 });
 
 var moon = new Planet({
+  isMoon: true,
   name: 'moon',
+  freq: 440,
   orbit : {
     around: earth, radius: 20
   },
@@ -55,6 +60,7 @@ var moon = new Planet({
 
 var mars = new Planet({
   name: 'mars',
+  freq: 550,
   orbit: {
     around: sun,
     radius: 140
@@ -76,6 +82,7 @@ var asteroidBelt = new AsteroidBelt({
 
 var jupiter = new Planet({
   name: 'jupiter',
+  freq: 660,
   orbit: {
     around: sun,
     radius: 280
@@ -86,13 +93,14 @@ var jupiter = new Planet({
 });
 
 
-var ganymede = new Planet({name: 'ganyemede', orbit : {around: jupiter, radius: 20}, radius: 2.0, mass: 12, color: "#B4B4C2"});
-var callisto = new Planet({name: 'callisto', orbit : {around: jupiter, radius: 25}, radius: 2.0, mass: 8,  color: "#B4B4C2"});
-var io       = new Planet({name: 'io', orbit : {around: jupiter, radius: 30}, radius: 2.5, mass: 6,  color: "#B4B4C2"});
-var europa   = new Planet({name: 'europa', orbit : {around: jupiter, radius: 35}, radius: 3.0, mass: 18, color: "#B4B4C2"});
+//var ganymede = new Planet({isMoon: true, name: 'ganyemede', orbit : {around: jupiter, radius: 20}, radius: 2.0, mass: 12, color: "#B4B4C2"});
+//var callisto = new Planet({isMoon: true, name: 'callisto', orbit : {around: jupiter, radius: 25}, radius: 2.0, mass: 8,  color: "#B4B4C2"});
+//var io       = new Planet({isMoon: true, name: 'io', orbit : {around: jupiter, radius: 30}, radius: 2.5, mass: 6,  color: "#B4B4C2"});
+//var europa   = new Planet({isMoon: true, name: 'europa', orbit : {around: jupiter, radius: 35}, radius: 3.0, mass: 18, color: "#B4B4C2"});
 
 var saturn = new Planet({
   name: 'saturn',
+  freq: 770,
   orbit: {
     around: sun,
     radius: 340
@@ -104,6 +112,7 @@ var saturn = new Planet({
 
 var uranus = new Planet({
   name: 'uranus',
+  freq: 880,
   orbit: {
     around: sun,
     radius: 400
@@ -115,6 +124,7 @@ var uranus = new Planet({
 
 var neptune = new Planet({
   name: 'neptune',
+  freq: 990,
   orbit: {
     around: sun,
     radius: 480
@@ -148,26 +158,29 @@ milkyWay.addBody(moon);
 milkyWay.addBody(asteroidBelt);
 
 milkyWay.addBody(jupiter);
-milkyWay.addBody(ganymede);
-milkyWay.addBody(callisto);
-milkyWay.addBody(io);
-milkyWay.addBody(europa);
+_.each(_.range(2), function(i) {
+  milkyWay.addBody(new Planet({isMoon: true, name: 'jupiter_' + i, orbit : {around: jupiter, radius: Math.random() * 20 + 20}, radius: Math.random() + 1, mass: Math.random() + 20 + 5, color: "#B4B4C2"}));
+}.bind(this));
+//milkyWay.addBody(ganymede);
+//milkyWay.addBody(callisto);
+//milkyWay.addBody(io);
+//milkyWay.addBody(europa);
 
 milkyWay.addBody(saturn);
 
 milkyWay.addBody(uranus);
 milkyWay.addBody(neptune);
 
-_.each(_.range(3), function(i) {
-  milkyWay.addBody(new Planet({name: 'saturn_' + i, orbit : {around: saturn, radius: Math.random() * 20 + 20}, radius: Math.random() + 1, mass: Math.random() + 20 + 5, color: "#B4B4C2"}));
+_.each(_.range(2), function(i) {
+  milkyWay.addBody(new Planet({isMoon: true, name: 'saturn_' + i, orbit : {around: saturn, radius: Math.random() * 20 + 20}, radius: Math.random() + 1, mass: Math.random() + 20 + 5, color: "#B4B4C2"}));
 }.bind(this));
 
-_.each(_.range(6), function(i) {
-  milkyWay.addBody(new Planet({name: 'neptune_' + i, orbit : {around: neptune, radius: Math.random() * 20 + 20}, radius: Math.random() + 1, mass: Math.random() + 20 + 5, color: "#B4B4C2"}));
+_.each(_.range(1), function(i) {
+  milkyWay.addBody(new Planet({isMoon: true, name: 'neptune_' + i, orbit : {around: neptune, radius: Math.random() * 20 + 20}, radius: Math.random() + 1, mass: Math.random() + 20 + 5, color: "#B4B4C2"}));
 }.bind(this));
 
-_.each(_.range(12), function(i) {
-  milkyWay.addBody(new Planet({name: 'uranus_' + i, orbit : {around: uranus, radius: Math.random() * 20 + 20}, radius: Math.random() + 1, mass: Math.random() + 20 + 5, color: "#B4B4C2"}));
+_.each(_.range(1), function(i) {
+  milkyWay.addBody(new Planet({isMoon: true, name: 'uranus_' + i, orbit : {around: uranus, radius: Math.random() * 20 + 20}, radius: Math.random() + 1, mass: Math.random() + 20 + 5, color: "#B4B4C2"}));
 }.bind(this));
 
 milkyWay.addBody(oortCloud);
