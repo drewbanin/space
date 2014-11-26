@@ -7,7 +7,7 @@ var WIDTH = 1300;
 
 var CENTER = {x: WIDTH / 2, y: HEIGHT / 2};
 
-var sun = new Triangle(CENTER, 50, 50, 1000, "#FFF76A");
+var sun = new Sun(CENTER, 50, 50, 1000, -0.1, "#FFF76A");
 
 var mercury = new Planet({
   name: 'mercury',
@@ -100,10 +100,10 @@ var jupiter = new Planet({
 });
 
 
-//var ganymede = new Planet({isMoon: true, name: 'ganyemede', orbit : {around: jupiter, radius: 20}, radius: 2.0, mass: 12, color: "#B4B4C2"});
-//var callisto = new Planet({isMoon: true, name: 'callisto', orbit : {around: jupiter, radius: 25}, radius: 2.0, mass: 8,  color: "#B4B4C2"});
-//var io       = new Planet({isMoon: true, name: 'io', orbit : {around: jupiter, radius: 30}, radius: 2.5, mass: 6,  color: "#B4B4C2"});
-//var europa   = new Planet({isMoon: true, name: 'europa', orbit : {around: jupiter, radius: 35}, radius: 3.0, mass: 18, color: "#B4B4C2"});
+var ganymede = new Planet({isMoon: true, number: 1, name: 'ganyemede', orbit : {around: jupiter, radius: 20}, radius: 2.0, mass: 12, color: "#B4B4C2"});
+var callisto = new Planet({isMoon: true, number: 2, name: 'callisto', orbit : {around: jupiter, radius: 25}, radius: 2.0, mass: 8,  color: "#B4B4C2"});
+var io       = new Planet({isMoon: true, number: 3, name: 'io', orbit : {around: jupiter, radius: 30}, radius: 2.5, mass: 6,  color: "#B4B4C2"});
+var europa   = new Planet({isMoon: true, number: 4, name: 'europa', orbit : {around: jupiter, radius: 35}, radius: 3.0, mass: 18, color: "#B4B4C2"});
 
 var saturn = new Planet({
   name: 'saturn',
@@ -171,10 +171,10 @@ milkyWay.addBody(jupiter);
 _.each(_.range(2), function(i) {
   milkyWay.addBody(new Planet({isMoon: true, name: 'jupiter_' + i, orbit : {around: jupiter, radius: Math.random() * 20 + 20}, radius: Math.random() + 1, mass: Math.random() + 20 + 5, color: "#B4B4C2"}));
 }.bind(this));
-//milkyWay.addBody(ganymede);
-//milkyWay.addBody(callisto);
-//milkyWay.addBody(io);
-//milkyWay.addBody(europa);
+milkyWay.addBody(ganymede);
+milkyWay.addBody(callisto);
+milkyWay.addBody(io);
+milkyWay.addBody(europa);
 
 milkyWay.addBody(saturn);
 

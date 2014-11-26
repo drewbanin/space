@@ -12,6 +12,10 @@ function Planet(data) {
   this.prevDeg  = 0;
 }
 
+Planet.prototype.justPassed = function(bodyDegrees) {
+  return false;
+};
+
 Planet.prototype.distanceFrom = function(point) {
   var dx = point.x - this.pos.x;
   var dy = point.y - this.pos.y;
@@ -21,9 +25,10 @@ Planet.prototype.distanceFrom = function(point) {
 Planet.prototype.playSound = function(tick) {
   if (this.isMoon) {
   } else {
-    var freq = (990 - this.freq);
-    var sine1 = T("sin", {freq: freq, mul:.05});
-    var fadeout = Math.pow(this.freq / 110, 2) * 100;
+    //var freq = (990 - this.freq);
+    var freqs = [261.6, 329.6, 391.9];
+    var sine1 = T("sin", {freq: freqs[this.number % freqs.length] * this.number, mul:0.05});
+    var fadeout = this.number * 500;
     T("perc", {r:fadeout+"ms"}, sine1).on("ended", function() {
       this.pause();
     }).bang().play();
@@ -33,7 +38,7 @@ Planet.prototype.playSound = function(tick) {
 Planet.prototype.getPos = function(tick) {
   //deg = (tick * (Math.PI / 180) * this.velocity) % (2 * Math.PI);
   //deg = (tick * (Math.PI / 180) * Math.pow(2, 8 - this.number) / 2) % (2 * Math.PI);
-  deg = (tick * (Math.PI / 180) * Math.pow(2, 8 - this.number) / 2) % (2 * Math.PI);
+  deg = (tick * (Math.PI / 180) * Math.pow(2, 7 - this.number) / 2) % (2 * Math.PI);
   if (Math.cos(this.prevDeg) <= 0 && Math.cos(deg) > 0) {
   //if (Math.sin(this.prevDeg) <= 0 && Math.sin(deg) > 0) {
     this.playSound(tick);
