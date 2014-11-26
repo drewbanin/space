@@ -14,8 +14,9 @@ var mercury = new Planet({
   freq: 110,
   orbit: {
     around: sun,
-    radius: 50
+    radius: 50,
   },
+  number: 1,
   radius: 3,
   mass: 20,
   color: "#5D7A8C"
@@ -26,8 +27,9 @@ var venus = new Planet({
   freq: 220,
   orbit : {
     around: sun,
-    radius: 80
+    radius: 80,
   },
+  number: 2,
   radius: 5,
   mass: 50,
   color: "#21A4CF"
@@ -39,8 +41,9 @@ var earth = new Planet({
   freq: 330,
   orbit : {
     around: sun,
-    radius: 120
+    radius: 120,
   },
+  number: 3,
   radius: 7,
   mass: 20,
   color: "#61A4CF"
@@ -51,8 +54,10 @@ var moon = new Planet({
   name: 'moon',
   freq: 440,
   orbit : {
-    around: earth, radius: 20
+    around: earth,
+    radius: 20,
   },
+  number: 1,
   radius: 2,
   mass: 80,
   color: "#B4B4C2"
@@ -63,17 +68,18 @@ var mars = new Planet({
   freq: 550,
   orbit: {
     around: sun,
-    radius: 140
+    radius: 140,
   },
- radius:  4,
- mass: 60,
- color: "#A34939"
+  number: 4,
+  radius:  4,
+  mass: 60,
+  color: "#A34939"
 });
 
 var asteroidBelt = new AsteroidBelt({
   orbit: {
     around: sun,
-    radius: 200
+    radius: 200,
   },
   count: 100,
   maxOffset: 20,
@@ -85,11 +91,12 @@ var jupiter = new Planet({
   freq: 660,
   orbit: {
     around: sun,
-    radius: 280
+    radius: 280,
   },
- radius:  10,
- mass: 220,
- color: "#8A823E"
+  number: 5,
+  radius:  10,
+  mass: 220,
+  color: "#8A823E"
 });
 
 
@@ -103,11 +110,12 @@ var saturn = new Planet({
   freq: 770,
   orbit: {
     around: sun,
-    radius: 340
+    radius: 340,
   },
- radius:  15,
- mass: 200,
- color: "#534135"
+  number: 6,
+  radius:  15,
+  mass: 200,
+  color: "#534135"
 });
 
 var uranus = new Planet({
@@ -115,11 +123,12 @@ var uranus = new Planet({
   freq: 880,
   orbit: {
     around: sun,
-    radius: 400
+    radius: 400,
   },
- radius:  10,
- mass: 220,
- color: "#2F3B78"
+  number: 7,
+  radius:  10,
+  mass: 220,
+  color: "#2F3B78"
 });
 
 var neptune = new Planet({
@@ -127,8 +136,9 @@ var neptune = new Planet({
   freq: 990,
   orbit: {
     around: sun,
-    radius: 480
+    radius: 480,
   },
+  number: 8,
  radius:  12,
  mass: 220,
  color: "#253840"
@@ -137,7 +147,7 @@ var neptune = new Planet({
 var oortCloud = new AsteroidBelt({
   orbit: {
     around: sun,
-    radius: 600
+    radius: 600,
   },
   count: 500,
   maxOffset: 100,

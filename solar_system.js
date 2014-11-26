@@ -4,7 +4,7 @@ function SolarSystem(sun, ctx, dimensions) {
   this.sun = sun;
   this.ctx = ctx;
   this.dimensions = dimensions;
-  this.frameRate = 33;
+  this.frameRate = 66;
 }
 
 SolarSystem.prototype.addBody = function(planet) {
@@ -21,7 +21,7 @@ SolarSystem.prototype.draw = function(ctx, tick) {
 SolarSystem.prototype.step = function() {
   this.ctx.clearRect(0, 0, this.dimensions.width, this.dimensions.height);
   this.draw(this.ctx, this.tick);
-  this.tick += 1;
+  this.tick += .1;
 };
 
 SolarSystem.prototype.letThereBeLight = function() {

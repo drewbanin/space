@@ -3,6 +3,7 @@ function Planet(data) {
   this.freq     = data.freq;
   this.orbit    = data.orbit;
   this.radius   = data.radius;
+  this.number   = data.number;
   this.mass     = data.mass;
   this.color    = data.color;
   this.velocity = (this.mass * this.orbit.around.mass) / (this.orbit.radius * this.orbit.radius);
@@ -24,14 +25,17 @@ Planet.prototype.playSound = function(tick) {
     var sine1 = T("sin", {freq: freq, mul:.05});
     var fadeout = Math.pow(this.freq / 110, 2) * 100;
     T("perc", {r:fadeout+"ms"}, sine1).on("ended", function() {
-        this.pause();
+      this.pause();
     }).bang().play();
   }
 };
 
 Planet.prototype.getPos = function(tick) {
-  deg = (tick * (Math.PI / 180) * this.velocity) % (2 * Math.PI);
-  if (Math.sin(this.prevDeg) <= 0 && Math.sin(deg) > 0) {
+  //deg = (tick * (Math.PI / 180) * this.velocity) % (2 * Math.PI);
+  //deg = (tick * (Math.PI / 180) * Math.pow(2, 8 - this.number) / 2) % (2 * Math.PI);
+  deg = (tick * (Math.PI / 180) * Math.pow(2, 8 - this.number) / 2) % (2 * Math.PI);
+  if (Math.cos(this.prevDeg) <= 0 && Math.cos(deg) > 0) {
+  //if (Math.sin(this.prevDeg) <= 0 && Math.sin(deg) > 0) {
     this.playSound(tick);
   } else if (Math.sin(this.prevDeg) > 0 && Math.sin(deg) <= 0) {
     //this.playSound(tick);
