@@ -9,12 +9,21 @@
       }
       body {
         background-color: #000;
+        margin: 0;
       }
     </style>
   </head>
   <body>
-    <canvas id="space" width="1300" height="800"></canvas>
+    <canvas id="space" style='border-color: #fff'></canvas>
 
+     <script>
+       var SCREEN_WIDTH  = 1000;
+       var SCREEN_HEIGHT = 1000;
+
+       var canvas = document.getElementById('space');
+       canvas.width = SCREEN_WIDTH;
+       canvas.height = SCREEN_HEIGHT;
+     </script>
      <script src="/underscore.js"    type="text/javascript"></script>
      <script src="/timbre.js"        type="text/javascript" ></script>
 

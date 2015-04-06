@@ -2,10 +2,7 @@ var c = document.getElementById("space");
 ctx = c.getContext("2d");
 ctx.strokeStyle = "rgba(255,255,255,1)";
 
-var HEIGHT = 800;
-var WIDTH = 1300;
-
-var CENTER = {x: WIDTH / 2, y: HEIGHT / 2};
+var CENTER = {x: SCREEN_WIDTH / 2, y: SCREEN_HEIGHT / 2};
 
 var sun = new Sun(CENTER, 50, 50, 1000, -0.1, "#FFF76A");
 
@@ -44,7 +41,7 @@ var earth = new Planet({
     radius: 120,
   },
   number: 3,
-  radius: 7,
+  radius: 9,
   mass: 20,
   color: "#61A4CF"
 });
@@ -123,7 +120,7 @@ var uranus = new Planet({
   freq: 880,
   orbit: {
     around: sun,
-    radius: 400,
+    radius: 380,
   },
   number: 7,
   radius:  10,
@@ -136,7 +133,7 @@ var neptune = new Planet({
   freq: 990,
   orbit: {
     around: sun,
-    radius: 480,
+    radius: 440,
   },
   number: 8,
  radius:  12,
@@ -154,7 +151,7 @@ var oortCloud = new AsteroidBelt({
   color: '#2E383D'
 });
 
-var milkyWay = new SolarSystem(sun, ctx, {width: WIDTH, height: HEIGHT});
+var milkyWay = new SolarSystem(sun, ctx, {width: SCREEN_WIDTH, height: SCREEN_HEIGHT});
 
 milkyWay.addBody(mercury);
 
@@ -193,6 +190,6 @@ _.each(_.range(1), function(i) {
   milkyWay.addBody(new Planet({isMoon: true, name: 'uranus_' + i, orbit : {around: uranus, radius: Math.random() * 20 + 20}, radius: Math.random() + 1, mass: Math.random() + 20 + 5, color: "#B4B4C2"}));
 }.bind(this));
 
-milkyWay.addBody(oortCloud);
+//milkyWay.addBody(oortCloud);
 
 milkyWay.letThereBeLight();
