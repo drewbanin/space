@@ -1,11 +1,26 @@
 
+//var NOTE_FREQS = {
+//};
+
 var NOTE_FREQS = {
+  'a_flat' : 207.65,
   'c' : 261.6,
+  'e_flat' : 311.13,
   'e' : 329.6,
+  'f_sharp' : 369.99,
   'g' : 391.9,
   'b_flat' : 466.1,
   'd' : 783.99,
 };
+
+/// cool
+//var planet_freqs = ['c', 'e', 'g', 'b_flat', 'd']
+
+// the coolest!!!
+var planet_freqs = ['c', 'e', 'g', 'b_flat', 'd', 'a_flat', 'e_flat', 'f_sharp'];
+
+// cooler?
+//var planet_freqs = ['a_flat', 'c', 'e_flat', 'f_sharp']
 
 // thanks, stackoverflow!
 // http://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
@@ -75,16 +90,13 @@ Planet.prototype.playSound = function(tick, factor) {
       fadeout: 0,
     }
   } else {
-    //var freq = (990 - this.freq);
-    // var freqs = [261.6, 329.6, 391.9]; // CEG
-    var freqs = ['c', 'e', 'g', 'd', 'b_flat'];
     var multiplier = 1 / (this.number * factor);
-    var note = freqs[this.number % freqs.length];
+    var note = planet_freqs[this.number % planet_freqs.length];
     //var sine1 = T("sin", {freq: NOTE_FREQS[note] * multiplier, mul:0.05});
     var freq = NOTE_FREQS[note] * multiplier;
     freq = freq < 50 ? NOTE_FREQS[note] : freq;
     var sine1 = T("sin", {freq: freq, mul:0.1});
-    var fadeout = this.number * this.number * 100;
+    var fadeout = ((1 + this.number) * (1 + this.number)) * 100;
     T("perc", {r:fadeout+"ms"}, sine1).on("ended", function() {
       this.pause();
     }).bang().play();
@@ -128,8 +140,8 @@ Planet.prototype.draw = function(ctx, tick) {
   ctx.arc(this.pos.x, this.pos.y, this.radius, 0, 2 * Math.PI);
   ctx.fill();
 
-  if (this.ticksTillSilent > 66) {
-    this.ticksTillSilent -= 66;
+  if (this.ticksTillSilent > 20) {
+    this.ticksTillSilent -= 20;
   } else {
     this.ticksTillSilent = 0;
   }
