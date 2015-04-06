@@ -138,11 +138,16 @@ Planet.prototype.draw = function(ctx, tick) {
 
   this.setColor();
   ctx.fillStyle = this.color;
+  ctx.strokeStyle = shadeBlend(-.5, this.color);
+
   ctx.beginPath()
   ctx.arc(this.pos.x, this.pos.y, this.radius, 0, 2 * Math.PI);
   ctx.closePath();
+  var old_width = ctx.lineWidth;
+  ctx.lineWidth = 5;
   ctx.stroke();
   ctx.fill();
+  ctx.lineWidth = old_width;
 
   if (this.ticksTillSilent > 20) {
     this.ticksTillSilent -= 20;
