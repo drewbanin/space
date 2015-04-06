@@ -62,6 +62,29 @@ Sun.prototype.draw = function(ctx, tick){
   ctx.closePath();
   ctx.fill();
 
+  ctx.strokeStyle = "rgba(0,0,0,1)";
+  ctx.fillStyle = "rgba(255,255,255,1)";
+  ctx.beginPath()
+
+  ctx.moveTo(-10,5);
+  ctx.bezierCurveTo(-10,0,10,0,10,5);
+  ctx.moveTo(-10,5);
+  ctx.bezierCurveTo(-10,10,10,10,10,5);
+  ctx.stroke();
+  ctx.fill();
+
+  ctx.fillStyle = '#000';
+  ctx.beginPath()
+  ctx.arc(0, 5, 2, 0, 2 * Math.PI);
+  ctx.closePath();
+  ctx.stroke();
+  ctx.fill();
+
+  ctx.closePath();
+  ctx.stroke();
+  ctx.fill();
+
+
   ctx.restore();
 };
 
