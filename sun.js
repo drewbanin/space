@@ -32,6 +32,7 @@ Sun.prototype.draw = function(ctx, tick){
   this.prevDeg = this.deg;
   this.deg = rad * (180 / Math.PI);
 
+
   ctx.translate(this.pos.x, this.pos.y);
   ctx.rotate(rad);
 
@@ -45,11 +46,14 @@ Sun.prototype.draw = function(ctx, tick){
   //ctx.stroke();
   //ctx.dashedLine(right.x, right.y, 1200, right.y, 4);
   var line_size = 500;
-  var line_dash_size = 10;
+  var line_dash_size = 20;
+
+  var old_style = ctx.strokeStyle;
   ctx.dashedLine(top.x - this.pos.x, -line_size, 0, line_size, line_dash_size);
   ctx.dashedLine(-line_size, 0, line_size, 0, line_dash_size);
+  ctx.strokeStyle = "rgba(255,255,255,.3)";
   ctx.stroke();
-
+  ctx.strokeStyle = old_style;
 
   ctx.beginPath();
   ctx.moveTo(-this.pos.x + bottom_left.x,  -this.pos.y + bottom_left.y);
