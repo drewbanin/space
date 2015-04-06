@@ -37,6 +37,7 @@ Asteroid.prototype.draw = function(ctx, tick) {
   this.pos = this.getPos(tick);
   ctx.beginPath()
   ctx.arc(this.pos.x, this.pos.y, this.radius, 0, 2 * Math.PI);
+  ctx.closePath();
   ctx.fill();
 };
 

@@ -16,14 +16,12 @@ var NOTE_FREQS = {
 /// cool
 //var planet_freqs = ['c', 'e', 'g', 'b_flat', 'd']
 
-// the coolest!!!
-var planet_freqs = ['c', 'e', 'g', 'b_flat', 'd', 'a_flat', 'e_flat', 'f_sharp'];
-
 // cooler?
 //var planet_freqs = ['a_flat', 'c', 'e_flat', 'f_sharp']
 
-// thanks, stackoverflow!
-// http://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
+// the coolest!!!
+var planet_freqs = ['c', 'e', 'g', 'b_flat', 'd', 'a_flat', 'e_flat', 'f_sharp'];
+
 function Planet(data) {
   this.name     = data.name;
   this.freq     = data.freq;
@@ -127,10 +125,23 @@ Planet.prototype.getPos = function(tick) {
 
 Planet.prototype.draw = function(ctx, tick) {
   this.pos = this.getPos(tick);
+
+  if (!this.isMoon) {
+    var old_style = ctx.strokeStyle;
+    ctx.beginPath()
+    ctx.arc(this.orbit.around.pos.x, this.orbit.around.pos.y, this.orbit.radius, 0, 2 * Math.PI);
+    ctx.strokeStyle = "rgba(255,255,255,.3)";
+    ctx.stroke();
+    ctx.closePath();
+    ctx.strokeStyle = old_style;
+  }
+
   this.setColor();
   ctx.fillStyle = this.color;
   ctx.beginPath()
   ctx.arc(this.pos.x, this.pos.y, this.radius, 0, 2 * Math.PI);
+  ctx.closePath();
+  ctx.stroke();
   ctx.fill();
 
   if (this.ticksTillSilent > 20) {

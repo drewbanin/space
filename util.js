@@ -17,6 +17,9 @@ CanvasRenderingContext2D.prototype.dashedLine = function (x1, y1, x2, y2, dashLe
     this[q % 2 == 0 ? 'moveTo' : 'lineTo'](x2, y2);
 };
 
+
+// thanks, stackoverflow!
+// http://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
 shadeBlend = function(p, c0, c1 ){
     var n=p<0?p*-1:p,u=Math.round,w=parseInt;
     if(c0.length>7){

@@ -146,7 +146,7 @@ var oortCloud = new AsteroidBelt({
     around: sun,
     radius: 600,
   },
-  count: 500,
+  count: 1000,
   maxOffset: 100,
   color: '#2E383D'
 });
@@ -190,6 +190,6 @@ _.each(_.range(1), function(i) {
   milkyWay.addBody(new Planet({isMoon: true, name: 'uranus_' + i, orbit : {around: uranus, radius: Math.random() * 20 + 20}, radius: Math.random() + 1, mass: Math.random() + 20 + 5, color: "#B4B4C2"}));
 }.bind(this));
 
-//milkyWay.addBody(oortCloud);
+milkyWay.addBody(oortCloud);
 
 milkyWay.letThereBeLight();
