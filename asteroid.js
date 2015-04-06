@@ -6,15 +6,14 @@ function Asteroid(data) {
   this.offsetX = data.offsetX;
   this.offsetY = data.offsetY;
   this.pos = this.getPos(0);
+  this.tickOffset = Math.floor(Math.random() * 1000);
   this.prevDeg = 0;
   this.velocity = (this.mass * this.orbit.around.mass) / (this.orbit.radius * this.orbit.radius) * 2;
 }
 
-Asteroid.prototype.getPos = function(tick) {
+Asteroid.prototype.getPos = function(actual_tick) {
+  var tick = actual_tick + this.tickOffset;
   deg = tick * (Math.PI / 180) * this.velocity;
-  if (Math.cos(this.prevDeg) <= 0 && Math.cos(deg) > 0) {
-    this.playSound(tick);
-  }
   this.prevDeg = deg;
   var offset_x = Math.cos(deg) * this.orbit.radius + this.offsetX;
   var offset_y = Math.sin(deg) * this.orbit.radius + this.offsetY;
@@ -22,15 +21,6 @@ Asteroid.prototype.getPos = function(tick) {
     x: this.orbit.around.pos.x + offset_x,
     y: this.orbit.around.pos.y + offset_y
   }
-};
-
-Asteroid.prototype.playSound = function(tick) {
-  var freq = (990 - this.freq);
-  var sine1 = T("sin", {freq: freq, mul:.05});
-  var fadeout = Math.pow(this.freq / 110, 2) * 100;
-  T("perc", {r:fadeout+"ms"}, sine1).on("ended", function() {
-    this.pause();
-  }).bang().play();
 };
 
 Asteroid.prototype.draw = function(ctx, tick) {
