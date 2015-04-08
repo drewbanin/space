@@ -6,12 +6,14 @@ var CENTER = {x: SCREEN_WIDTH / 2, y: SCREEN_HEIGHT / 2};
 
 var sun = new Sun(CENTER, 50, 50, 1000, -0.1, "#FFF76A");
 
+var BASE_ORBIT_RADIUS = 20;
+
 var mercury = new Planet({
   name: 'mercury',
   freq: 110,
   orbit: {
     around: sun,
-    radius: 50,
+    radius: BASE_ORBIT_RADIUS * 2.5,
   },
   number: 1,
   radius: 3,
@@ -24,7 +26,7 @@ var venus = new Planet({
   freq: 220,
   orbit : {
     around: sun,
-    radius: 80,
+    radius: BASE_ORBIT_RADIUS * 4,
   },
   number: 2,
   radius: 5,
@@ -38,7 +40,7 @@ var earth = new Planet({
   freq: 330,
   orbit : {
     around: sun,
-    radius: 120,
+    radius: BASE_ORBIT_RADIUS * 6,
   },
   number: 3,
   radius: 9,
@@ -65,7 +67,7 @@ var mars = new Planet({
   freq: 550,
   orbit: {
     around: sun,
-    radius: 140,
+    radius: BASE_ORBIT_RADIUS * 7,
   },
   number: 4,
   radius:  4,
@@ -76,7 +78,7 @@ var mars = new Planet({
 var asteroidBelt = new AsteroidBelt({
   orbit: {
     around: sun,
-    radius: 200,
+    radius: BASE_ORBIT_RADIUS * 10,
   },
   count: 100,
   maxOffset: 20,
@@ -88,7 +90,7 @@ var jupiter = new Planet({
   freq: 660,
   orbit: {
     around: sun,
-    radius: 280,
+    radius: BASE_ORBIT_RADIUS * 14,
   },
   number: 5,
   radius:  10,
@@ -107,7 +109,7 @@ var saturn = new Planet({
   freq: 770,
   orbit: {
     around: sun,
-    radius: 340,
+    radius: BASE_ORBIT_RADIUS * 17,
   },
   number: 6,
   radius:  15,
@@ -120,7 +122,7 @@ var uranus = new Planet({
   freq: 880,
   orbit: {
     around: sun,
-    radius: 380,
+    radius: BASE_ORBIT_RADIUS * 19,
   },
   number: 7,
   radius:  10,
@@ -133,7 +135,7 @@ var neptune = new Planet({
   freq: 990,
   orbit: {
     around: sun,
-    radius: 440,
+    radius: BASE_ORBIT_RADIUS * 22,
   },
   number: 8,
  radius:  12,
@@ -144,10 +146,10 @@ var neptune = new Planet({
 var oortCloud = new AsteroidBelt({
   orbit: {
     around: sun,
-    radius: 600,
+    radius: BASE_ORBIT_RADIUS * 28,
   },
   count: 1000,
-  maxOffset: 100,
+  maxOffset: 50,
   color: '#2E383D'
 });
 

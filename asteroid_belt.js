@@ -16,12 +16,15 @@ function AsteroidBelt(data) {
       var mass = Math.random() * 200 - 100;
       mass = Math.abs(mass) < 5 ? 5 + Math.random() * 10 : mass;
     }
+    var fac_x = Math.random() < 0.5 ? -1 : 1;
+    var fac_y = Math.random() < 0.5 ? -1 : 1;
+
     var asteroid = new Asteroid({
       orbit: orbit,
       color: this.color,
       mass: mass,
-      offsetX: Math.random() * this.maxOffset,
-      offsetY: Math.random() * this.maxOffset,
+      offsetX: Math.random() * this.maxOffset * fac_x,
+      offsetY: Math.random() * this.maxOffset * fac_y,
       radius: Math.random() * 2 + .05,
     });
     this.asteroids.push(asteroid);
