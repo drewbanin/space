@@ -159,7 +159,7 @@ var oortCloud = new AsteroidBelt({
 
 var milkyWay = new SolarSystem(sun, ctx, {width: SCREEN_WIDTH, height: SCREEN_HEIGHT});
 
-var planets = [mercury, venus, mars, earth, jupiter, saturn, uranus, neptune];
+var planets = [mercury, venus, earth, mars, jupiter, saturn, uranus, neptune];
 var controller = new Controller(ctx, canvas, {width: SCREEN_WIDTH, height: SCREEN_HEIGHT}, planets);
 milkyWay.addStatic(controller);
 

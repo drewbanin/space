@@ -17,7 +17,7 @@ function Controller(ctx, canvas, size, planets) {
 Controller.prototype.drawPlanetRow = function(ctx, planet, index) {
   var prev_fill = ctx.fillStyle;
 
-  var color = hexToRgb(planet.color);
+  var color = hexToRgb(planet.originalColor);
   var alpha = '.5';
   ctx.fillStyle = 'rgba(' + color.r + ', ' + color.g + ', ' + color.b + ', ' + alpha + ')';
 
@@ -32,7 +32,6 @@ Controller.prototype.drawPlanetRow = function(ctx, planet, index) {
 };
 
 Controller.prototype.draw = function(ctx, tick) {
-
   ctx.fillStyle = 'rgba(10, 10, 10, .5)';
   ctx.strokeStyle = 'rgba(20, 20, 20, .5)';
 
