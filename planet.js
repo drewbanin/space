@@ -130,7 +130,7 @@ Planet.prototype.draw = function(ctx, tick) {
     var old_style = ctx.strokeStyle;
     ctx.beginPath()
     ctx.arc(this.orbit.around.pos.x, this.orbit.around.pos.y, this.orbit.radius, 0, 2 * Math.PI);
-    ctx.strokeStyle = "rgba(255,255,255,.3)";
+    ctx.strokeStyle = "rgba(255,255,255,.2)";
     ctx.stroke();
     ctx.closePath();
     ctx.strokeStyle = old_style;

@@ -145,6 +145,8 @@ var neptune = new Planet({
  color: "#253840"
 });
 
+
+
 var oortCloud = new AsteroidBelt({
   orbit: {
     around: sun,
@@ -156,6 +158,10 @@ var oortCloud = new AsteroidBelt({
 });
 
 var milkyWay = new SolarSystem(sun, ctx, {width: SCREEN_WIDTH, height: SCREEN_HEIGHT});
+
+var planets = [mercury, venus, mars, earth, jupiter, saturn, uranus, neptune];
+var controller = new Controller(ctx, canvas, {width: SCREEN_WIDTH, height: SCREEN_HEIGHT}, planets);
+milkyWay.addStatic(controller);
 
 milkyWay.addBody(mercury);
 

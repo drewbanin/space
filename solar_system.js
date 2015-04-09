@@ -1,5 +1,6 @@
 function SolarSystem(sun, ctx, dimensions) {
   this.bodies  = [];
+  this.statics = [];
   this.tick = 0;
   this.sun = sun;
   this.ctx = ctx;
@@ -11,10 +12,18 @@ SolarSystem.prototype.addBody = function(planet) {
   this.bodies.push(planet);
 };
 
+SolarSystem.prototype.addStatic = function(static) {
+  this.statics.push(static);
+};
+
 SolarSystem.prototype.draw = function(ctx, tick) {
   this.sun.draw(ctx, tick);
   _.each(this.bodies, function(planet) {
     planet.draw(ctx, tick);
+  }.bind(this));
+
+  _.each(this.statics, function(static) {
+    static.draw(ctx, tick);
   }.bind(this));
 };
 
