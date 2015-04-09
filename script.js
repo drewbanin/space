@@ -1,10 +1,12 @@
-var c = document.getElementById("space");
-ctx = c.getContext("2d");
+var canvas = document.getElementById("space");
+ctx = canvas.getContext("2d");
 ctx.strokeStyle = "rgba(255,255,255,1)";
 
 var CENTER = {x: SCREEN_WIDTH / 2, y: SCREEN_HEIGHT / 2};
 
-var sun = new Sun(CENTER, 50, 50, 1000, -0.1, "#FFF76A");
+var screen_size = {w: SCREEN_WIDTH, h: SCREEN_HEIGHT};
+
+var sun = new Sun(CENTER, 50, 50, 1000, -0.1, "#FFF76A", canvas, screen_size);
 
 var BASE_ORBIT_RADIUS = 20;
 
