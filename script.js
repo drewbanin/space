@@ -69,7 +69,7 @@ var mars = new Planet({
   freq: 550,
   orbit: {
     around: sun,
-    radius: BASE_ORBIT_RADIUS * 7,
+    radius: BASE_ORBIT_RADIUS * 8,
   },
   number: 4,
   radius:  4,
